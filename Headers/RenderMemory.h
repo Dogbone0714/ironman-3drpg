@@ -5,7 +5,7 @@
 
 // ------------新增部分-------------------
 
-#define WIDTH_USER_SET 30  // 在這邊設置真正想要的高寬
+#define WIDTH_USER_SET 60  // 在這邊設置真正想要的高寬
 #define HEIGHT_USER_SET 30
 #define SCREEN_WIDTH (WIDTH_USER_SET + 1)  // 在文字介面中，「換行符」雖然無法被看到，
                                            // 卻占一格在那邊，所以必須將我們設定的值 + 1
