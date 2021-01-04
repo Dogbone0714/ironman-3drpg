@@ -2,19 +2,19 @@
 
 #include   <stdio.h>
 #include   <windows.h>
-#include   "RenderMemory.h"  // éœ€è¦ç”¨åˆ°ç¹ªè£½è¨˜æ†¶é«”æª”æ¡ˆä¸­çš„è®Šæ•¸ï¼Œéœ€å«æ‹¬é€²ä¾†
+#include   "RenderMemory.h"  // »İ­n¥Î¨ìÃ¸»s°O¾ĞÅéÀÉ®×¤¤ªºÅÜ¼Æ¡A»İ§t¬A¶i¨Ó
 #include   "SystemSetting.h"
 
-void selfCls(){  // æ­¤æ¸…ç©ºè¢å¹•åŸç†æ˜¯ç›´æ¥å°‡å…‰æ¨™å¸¶åˆ°æœ€å·¦ä¸Šè§’ï¼Œå†ç›´æ¥è¤‡å¯«æ›´æ–°ç•«é¢
+void selfCls(){  // ¦¹²MªÅ¿Ã¹õ­ì²z¬Oª½±µ±N¥ú¼Ğ±a¨ì³Ì¥ª¤W¨¤¡A¦Aª½±µ½Æ¼g§ó·sµe­±
 
     **System Setting**
-    handler = GetStdHandle(STD_OUTPUT_HANDLE);  // å–å¾—æ¨™æº–è¼¸å‡ºçš„handle
-    xyPoint.X = 0;  // å¸Œæœ›x, yåº§æ¨™éƒ½èƒ½åˆ°0çš„ä½ç½®
+    handler = GetStdHandle(STD_OUTPUT_HANDLE);  // ¨ú±o¼Ğ·Ç¿é¥Xªºhandle
+    xyPoint.X = 0;  // §Æ±æx, y®y¼Ğ³£¯à¨ì0ªº¦ì¸m
     xyPoint.Y = 0;
-    SetConsoleCursorPosition(handler, xyPoint);  // å°‡åº§æ¨™è¨­ç½®åˆ°è©²ä½ç½®
-    cursorInfo.bVisible = FALSE;  // å…‰æ¨™è¨­ç‚ºä¸å¯è¦‹
-    cursorInfo.dwSize = 1;  // å…‰æ¨™å¤§å°ç”¨ä¸åˆ°ï¼Œå…ˆè¨­ç‚º1
-    SetConsoleCursorInfo(handler, &cursorInfo);  // è¨­ç½®å…‰æ¨™è³‡è¨Š
+    SetConsoleCursorPosition(handler, xyPoint);  // ±N®y¼Ğ³]¸m¨ì¸Ó¦ì¸m
+    cursorInfo.bVisible = FALSE;  // ¥ú¼Ğ³]¬°¤£¥i¨£
+    cursorInfo.dwSize = 1;  // ¥ú¼Ğ¤j¤p¥Î¤£¨ì¡A¥ı³]¬°1
+    SetConsoleCursorInfo(handler, &cursorInfo);  // ³]¸m¥ú¼Ğ¸ê°T
 }
 
 void setting_system(){
@@ -23,13 +23,13 @@ void setting_system(){
     char cols_str[8] = "";
     sprintf(cols_str, "%d", SCREEN_WIDTH);
     char lines_str[8] = "";
-    sprintf(lines_str, "%d", SCREEN_HEIGHT + 16);  // å¤šå‡ºä¾†çš„16åˆ—å¯ä»¥é¡¯ç¤ºåº§æ¨™è³‡è¨Šã€è§’åº¦è³‡è¨Šç­‰ç­‰
+    sprintf(lines_str, "%d", SCREEN_HEIGHT + 16);  // ¦h¥X¨Óªº16¦C¥i¥HÅã¥Ü®y¼Ğ¸ê°T¡B¨¤«×¸ê°Tµ¥µ¥
     strcat(system_command, "mode con:cols=");
     strcat(system_command, cols_str);   //
-    strcat(system_command, " lines=");  // å°‡æŒ‡ä»¤å€‘æ‹¼æ¥æˆæ–‡å­—ï¼Œå†é€å‡ºçµ¦system
+    strcat(system_command, " lines=");  // ±N«ü¥O­Ì«÷±µ¦¨¤å¦r¡A¦A°e¥Xµ¹system
     strcat(system_command, lines_str);  //
-    system(system_command);  // ç”±systemå°‡æŒ‡ä»¤é€çµ¦ä½œæ¥­ç³»çµ±
-    system("@echo off");  // é—œé–‰å›é¡¯
-    system("TITLE 3D Game");  // è¨­ç½®æ¨™é¡Œ
-    SetWindowPos(GetConsoleWindow(),HWND_TOPMOST,500,100,0,0,SWP_NOSIZE);  // è¨­å®šè¦–çª—ä½ç½®
+    system(system_command);  // ¥Ñsystem±N«ü¥O°eµ¹§@·~¨t²Î
+    system("@echo off");  // Ãö³¬¦^Åã
+    system("TITLE 3D Game");  // ³]¸m¼ĞÃD
+    SetWindowPos(GetConsoleWindow(),HWND_TOPMOST,500,100,0,0,SWP_NOSIZE);  // ³]©wµøµ¡¦ì¸m
 }

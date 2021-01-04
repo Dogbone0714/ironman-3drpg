@@ -3,11 +3,11 @@
 #ifndef __SYSTEMSETTING_H__
 #define __SYSTEMSETTING_H__
 
-HANDLE handler;  // æŽ§åˆ¶è¦–çª—çš„è®Šæ•¸ï¼Œè¦–ç‚ºè¦–çª—çš„æŽ§åˆ¶æŠŠæ‰‹
-COORD xyPoint;  // Windowsç”¨çš„x, yåº§æ¨™åž‹æ…‹
-CONSOLE_CURSOR_INFO cursorInfo;  // æœ‰é—œå…‰æ¨™çš„è³‡è¨Šæ§‹æˆçš„çµæ§‹
+HANDLE handler;  // ±±¨îµøµ¡ªºÅÜ¼Æ¡Aµø¬°µøµ¡ªº±±¨î§â¤â
+COORD xyPoint;  // Windows¥Îªºx, y®y¼Ð«¬ºA
+CONSOLE_CURSOR_INFO cursorInfo;  // ¦³Ãö¥ú¼Ðªº¸ê°Tºc¦¨ªºµ²ºc
 
-void selfCls();  // è‡ªè¡Œæ’°å¯«çš„æ¸…ç©ºèž¢å¹•
-void setting_system();  // å°æ–¼cmdè¦–çª—çš„å„ç¨®è¨­å®š
+void selfCls();  // ¦Û¦æ¼¶¼gªº²MªÅ¿Ã¹õ
+void setting_system();  // ¹ï©ócmdµøµ¡ªº¦UºØ³]©w
 
 #endif // __SYSTEMSETTING_H__
