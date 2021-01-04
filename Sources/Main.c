@@ -1,4 +1,4 @@
-/* File: main.c */
+/* File: Main.c */
 
 #include <stdio.h>  // 標準輸入輸出
 #include <stdlib.h>  // 標準函式庫
