@@ -199,4 +199,13 @@ void render_screen(int mode)
     calc_tri();  /* 每次更新螢幕重新計算一次當下三角函數值 */
 
     render_cube(render_style, 0, 5, -150, 50, 50, 2, 2, 50, 50);  // 繪製一個寬平台
+
+    while(allCubes->next != NULL)  // 直到linklist到尾端前都
+    {
+        render_cube(render_style, allCubes->next->cx, allCubes->next->cy, allCubes->next->cz,
+                    allCubes->next->left, allCubes->next->right, allCubes->next->top,
+                    allCubes->next->bottom, allCubes->next->f, allCubes->next->r);
+        allCubes = allCubes->next;  // 繪製每一塊方塊，指標指到下一個
+    }
+    allCubes = &allCubesHead;       // 都畫完後指標回到開頭
 }
