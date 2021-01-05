@@ -129,7 +129,33 @@ int main(int argc, char *argv[])
         {
             return 0;
         }
+        if(GetAsyncKeyState(77) != 0)  /*M*/  // put a cube
+        {
+            render_screen(_CLEAN_MODE_);
+            while(allCubes->next != NULL)  // 將指標移到最後一塊
+            {
+                allCubes = allCubes->next;
+            }
+            
+            allCubes->next = (Cube *)malloc(sizeof(Cube));  // 用malloc配置一塊方塊接到下一塊
+            allCubes = allCubes->next;  // 指標移動到新方塊
+            allCubes->cx = camera_x_pos;  // 以下設置所有屬性
+            allCubes->cy = camera_y_pos;
+            allCubes->cz = camera_z_pos;
+            allCubes->style = '#';
+            allCubes->left = 2;
+            allCubes->right = 2;
+            allCubes->top = 2;
+            allCubes->bottom = 2;
+            allCubes->f = 2;
+            allCubes->r = 2;
+            allCubes->next = NULL;
+            allCubes = &allCubesHead;  // 指標移動回頭
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
     }
     
+
     return 0;
 }
