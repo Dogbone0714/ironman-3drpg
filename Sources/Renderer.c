@@ -27,6 +27,21 @@ void init_renderer()  // ªì©l¤Æ¦U¶µÅÜ¼Æ¡A¨ä¤¤´X¶µ¥i¥H¦Û¥Ñ½Õ¾ã¡A¥Ø«e¬O§Ú´ú¸Õ°_¨Ó¸
     cos_x = 0.0;
     sin_y = 0.0;
     cos_y = 0.0;
+
+    allCubes = &allCubesHead;  // «ü¼Ð¥ý«ü¨ì¶}ÀY
+    allCubes->next = &newCube;  // ±NnewCube³s¤W¶}ÀY
+    allCubes = allCubes->next;  // «ü¼Ð²¾°Ê¨ìnewCube¤W
+    allCubes->next = NULL;  // newCube¥ý±N¤U¤@¶ôªº¦ì§}³]¬°NULL
+    allCubes->cx = 0;       // ¥H¤U¬°³]©w¦U¶µÄÝ©Ê
+    allCubes->cy = 5;
+    allCubes->cz = -150;
+    allCubes->left = 50;
+    allCubes->right =50;
+    allCubes->top = 2;
+    allCubes->bottom = 2;
+    allCubes->f = 50;
+    allCubes->r = 50;
+    allCubes = &allCubesHead;  // «ü¼Ð¦^¨ì¶}ÀY
 }
 
 void div_zero_adjust(float *n)  // Á×§K°£¥H¹s¡A©Î¬O°£¥H¤Ó¤pªº¼Æ³y¦¨µ²ªG¹L¤j
