@@ -47,6 +47,88 @@ int main(int argc, char *argv[])
 
             isFrameUpdated = False;  // 將上一周期被設為True的isFrameUpdated設回False
         }
+
+        if(GetAsyncKeyState(87) != 0)  /*W*/ //前進  // W是否被按下
+        {
+            render_screen(_CLEAN_MODE_);  // 清空舊有畫面
+            camera_z_pos += cos_y * camera_speed;  // 在有旋轉角度的情形下，
+            camera_x_pos -= sin_y * camera_speed;  // 直線前進需要考慮x, z方向分量
+            render_screen(_RENDER_MODE_);  // 繪製
+            isFrameUpdated = True;  // 下一週期將更新到畫面上
+        }
+        if(GetAsyncKeyState(83) != 0)  /*S*/ //後退 // S是否被按下
+        {
+            render_screen(_CLEAN_MODE_);
+            camera_z_pos -= cos_y * camera_speed;
+            camera_x_pos += sin_y * camera_speed;
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(65) != 0)  /*A*/ //左移 // A是否被按下
+        {
+            render_screen(_CLEAN_MODE_);
+            camera_z_pos -= sin_y * camera_speed;
+            camera_x_pos -= cos_y * camera_speed;
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(68) != 0)  /*D*/ //右移 // D是否被按下
+        {
+            render_screen(_CLEAN_MODE_);
+            camera_z_pos += sin_y * camera_speed;
+            camera_x_pos += cos_y * camera_speed;
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(66) != 0)  /*B*/  //上升  // B是否被按下
+        {
+            render_screen(_CLEAN_MODE_);
+            camera_y_pos -= 2;  // 旋轉並不影響上下移動，直接更改攝影機y位置
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(78) != 0)  /*N*/  //下降  // N是否被按下
+        {
+            render_screen(_CLEAN_MODE_);
+            camera_y_pos += 2;
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(VK_RIGHT) != 0 || GetAsyncKeyState(VK_LEFT) != 0)
+        {
+            render_screen(_CLEAN_MODE_);
+            if(GetAsyncKeyState(VK_RIGHT) != 0)  // 沿y軸旋轉，類似頭左右擺動，由左右方向鍵控制
+            {
+                rot_y -= camera_speed * 0.006;  // 0.006是一個調整過的參數，大家可以斟酌此數值
+            }                                   // 讓旋轉幅度變大：加大此數值，反之則減小
+            if(GetAsyncKeyState(VK_LEFT) != 0)
+            {
+                rot_y += camera_speed * 0.006;
+            }
+            if(rot_y > M_PI * 2 || rot_y < -(M_PI * 2)) rot_y = 0.0;  // 當旋轉到360度與
+            render_screen(_RENDER_MODE_);                             // -360度時，歸零
+            isFrameUpdated = True;                                    // 確保可無限旋轉
+        }
+        if(GetAsyncKeyState(VK_UP) != 0 || GetAsyncKeyState(VK_DOWN) != 0)
+        {
+            render_screen(_CLEAN_MODE_);
+            if(GetAsyncKeyState(VK_UP) != 0)  // 沿x軸旋轉，類似頭上下擺動，由上下方向鍵控制
+            {
+                rot_x -= camera_speed * 0.006;
+            }
+            if(GetAsyncKeyState(VK_DOWN) != 0)
+            {
+                rot_x += camera_speed * 0.006;
+            }
+            if(rot_x > M_PI / 10) rot_x = M_PI / 10;  // 這邊我設定成上仰18度時就停止，
+            else if(rot_x < -(M_PI / 10)) rot_x = -(M_PI / 10);  // 往下18度時也停止。
+            render_screen(_RENDER_MODE_);
+            isFrameUpdated = True;
+        }
+        if(GetAsyncKeyState(VK_ESCAPE) != 0)  // 按下Esc時，遊戲結束！
+        {
+            return 0;
+        }
     }
     
     return 0;
